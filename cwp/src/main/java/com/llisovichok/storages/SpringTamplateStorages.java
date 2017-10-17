@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by KUDIN ALEKSANDR on 08.10.2017.
  */
-public interface SHStorages <T> {
+public interface SpringTamplateStorages<T> {
 
     Collection<T> values();
 

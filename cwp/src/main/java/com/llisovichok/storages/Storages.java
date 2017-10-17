@@ -15,11 +15,11 @@ public class Storages {
 
     //public final HibernateStorage hibernateStorage;
 
-    public final SHHiberStorage shHiberStorage;
+    public final SpringTamplateHiberStorage shHiberStorage;
 
 
     @Autowired
-    public Storages(final MemoryStorage memoryStorage, final SHHiberStorage shHiberStorage){
+    public Storages(final MemoryStorage memoryStorage, final SpringTamplateHiberStorage shHiberStorage){
         this.memoryStorage = memoryStorage;
         //this.jdbcStorage = jdbcStorage;
         //this.hibernateStorage = hibernateStorage;

@@ -10,7 +10,6 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.ByteArrayInputStream;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -21,12 +20,12 @@ import java.util.Set;
  */
 
 @Repository
-public class SHHibernateStorage implements SHHiberStorage {
+public class SpringTamplateHibernateStorage implements SpringTamplateHiberStorage {
 
     public final HibernateTemplate template;
 
     @Autowired
-    public SHHibernateStorage(HibernateTemplate template){
+    public SpringTamplateHibernateStorage(HibernateTemplate template){
         this.template = template;
     }
 

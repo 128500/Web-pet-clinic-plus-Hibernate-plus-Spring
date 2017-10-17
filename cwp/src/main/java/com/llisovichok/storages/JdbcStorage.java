@@ -136,8 +136,7 @@ public class JdbcStorage implements Storage {
             petStatement.setInt(3,user.getPet().getAge());
             petStatement.setInt(4, id);
             int petstat = petStatement.executeUpdate();
-            if(clistat > 0 && petstat > 0)return true;
-            else return false;
+            return clistat > 0 && petstat > 0;
 
         } catch(SQLException e) {
             e.getSQLState();

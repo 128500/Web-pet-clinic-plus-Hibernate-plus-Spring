@@ -16,6 +16,7 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <!-- Beans for HibernateTemplate-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="configLocations" value="classpath:hibernate.cfg.xml"/>
     </bean>
@@ -31,4 +32,30 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.llisovichok"/>
     <tx:annotation-driven/>
+
+    <!-- Beans for JdbcTemplate-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name = "driverClassName" value = "org.postgresql.Driver"/>
+        <property name = "url" value = "jdbc:postgresql://127.0.0.1:5432/lessons"/>
+        <property name = "username" value = "postgres"/>
+        <property name = "password" value = "password"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="nameTemplate"
+          class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+    <bean id="springJdbcStorage" class="com.llisovichok.storages.SpringJdbcStorage">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- Can use both -->
+        <property name="namedTemplate" ref="nameTemplate"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+
 </beans>
