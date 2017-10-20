@@ -27,15 +27,14 @@ public class DbTool {
                 125477447448l,
                 new Pet("Hippo", "iguana", 2));
         user.setRole(new Role("user"));
-        //int idHibernate = storages.hibernateStorage.addUser(user);
-        //int idJdbc = storages.jdbcStorage.addUser(user);
+        int idJdbc = storages.springJdbcStorage.addUser(user);
         user.setId(1);
         storages.memoryStorage.addUser(user);
         int hiberNumber = storages.shHiberStorage.addUser(user);
         ArrayList<User> users = (ArrayList<User>)storages.shHiberStorage.values();
 
         System.out.println(users.iterator().next().toString());
-        //System.out.println(storages.jdbcStorage.getUser(idJdbc).toString());
+        System.out.println(storages.springJdbcStorage.getUser(idJdbc).toString());
         System.out.println(storages.memoryStorage.getUser(1).toString());
 
         User changedUser = new User("Danni",

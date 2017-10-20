@@ -89,11 +89,42 @@ public class SpringJdbcStorage implements SpringJdbcTemplateStorage {
     @Override
     public void removeUser(Integer userId) {
 
+        Object[] params = {userId};
+        String deletePetSql = "DELETE FROM pets WHERE pets.client_id = ?";
+        jdbcTemplate.update(deletePetSql, params);
+
+        String deleteUserSql = "DELETE FROM clients WHERE uid = ?";
+        jdbcTemplate.update(deleteUserSql, params);
+
+
     }
 
     @Override
     public Collection<User> findUsers(String input, boolean lookInFirstName, boolean lookInLastName, boolean lookInPetName) {
-        return null;
+
+        String findSql = "SELECT * FROM clients, pets WHERE clients.uid = pets.client_id AND " +
+                "(lower(clients.first_name) LIKE :first_name OR " +
+                "lower(clients.last_name) LIKE :last_name OR " +
+                "lower(pets.nickname) LIKE :nickname OR " +
+                "lower(clients.address) LIKE :address) " +
+                "ORDER BY clients.uid";
+        Map <String, Object> map = new HashMap<>();
+        map.put("first_name" , lookInFirstName ? "%"+input.toLowerCase()+"%" : "");
+        map.put("last_name" , lookInLastName ? "%"+input.toLowerCase()+"%" : "");
+        map.put("nickname" , lookInPetName ? "%"+input.toLowerCase()+"%" : "");
+        map.put("address", !lookInFirstName && !lookInLastName && !lookInPetName ? "%"+input.toLowerCase()+"%" : "");
+        return namedTemplate.query(findSql, map, new UserMapper());
+    }
+
+    public void dropExistingTables(){
+        String sql  = "DROP TABLE pets, clients CASCADE";
+        jdbcTemplate.execute(sql);
+    }
+
+    public void createNewTables(){
+        String sql = "CREATE TABLE clients (uid serial PRIMARY KEY, first_name VARCHAR(50), last_name VARCHAR(50), address VARCHAR(50), phone BIGINT, id_pet BIGINT);"+
+                "CREATE TABLE pets (client_id INT PRIMARY KEY REFERENCES clients(uid), nickname VARCHAR (50), kind VARCHAR(40), age INT);";
+        jdbcTemplate.execute(sql);
     }
 
     private Map<String, Object> createUserMap(User user){

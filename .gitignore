@@ -168,3 +168,5 @@ cwp/target/
 *.sql
 
 *.properties
+
+cwp/log4j-application.log.1

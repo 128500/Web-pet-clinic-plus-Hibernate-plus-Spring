@@ -2,12 +2,12 @@ package com.llisovichok.storages;
 
 import com.llisovichok.lessons.clinic.Pet;
 import com.llisovichok.models.User;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.*;
@@ -19,6 +19,11 @@ public class SpringJdbcStorageTest {
 
     private final ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
     private final SpringJdbcStorage storage = (SpringJdbcStorage)context.getBean("springJdbcStorage");
+
+    @Before public void initialize() {
+        storage.dropExistingTables();
+        storage.createNewTables();
+    }
 
     @Test
     public void values() throws Exception {
@@ -92,5 +97,104 @@ public class SpringJdbcStorageTest {
         assertEquals("Dodik", alterEgo.getPet().getName() );
         assertEquals("snake", alterEgo.getPet().getKind() );
         assertEquals(4, alterEgo.getPet().getAge() );
+    }
+
+
+    @Test(expected = NoSuchElementException.class)
+    public void removeUser() throws Exception {
+        User user = new User("Test", "Test", "Test", 103, new Pet("Test", "test", 100));
+        int id = storage.addUser(user);
+        assertTrue(id > 0);
+        storage.removeUser(id);
+        storage.getUser(id);
+    }
+
+    @Test
+    public void findUsers() throws Exception {
+
+        User user = new User("Test", "Test", "Test", 103, new Pet("TEST", "test", 100));
+        User user2 = new User("Pest", "Test", "Test", 103, new Pet("TEST", "test", 100));
+        User user3 = new User("Dest", "Test", "Test", 103, new Pet("TEST", "test", 100));
+        int id = storage.addUser(user);
+        int id2 = storage.addUser(user2);
+        int id3 = storage.addUser(user3);
+
+        try {
+            assertTrue(id > 0);
+            assertTrue(id2 > 0);
+            assertTrue(id3 > 0);
+
+            Collection<User> collection = storage.findUsers("est", true, false, false);
+            ArrayList<User> result = new ArrayList<>(collection);
+
+
+            assertTrue(result.size() == 3);
+
+            User user_obtained1 = result.get(0);
+            User user_obtained2 = result.get(1);
+            User user_obtained3 = result.get(2);
+
+            assertEquals("Test", user_obtained1.getFirstName());
+            assertEquals("Pest", user_obtained2.getFirstName());
+            assertEquals("Dest", user_obtained3.getFirstName());
+
+
+            Collection<User> collection2 = storage.findUsers("Pe", true, false, false);
+            ArrayList<User> result2 = new ArrayList<>(collection2);
+
+            assertTrue(result2.size() == 1);
+
+            User user_obtained4 = result2.get(0);
+
+            assertEquals("Pest", user_obtained4.getFirstName());
+
+
+            Collection<User> collection3 = storage.findUsers("Test", true, true, false);
+            ArrayList<User> result3 = new ArrayList<>(collection3);
+
+            assertTrue(result3.size() == 3);
+
+           User user_obtained5 = result3.get(0);
+            User user_obtained6 = result3.get(1);
+            User user_obtained7 = result3.get(2);
+
+            assertEquals("Test", user_obtained5.getLastName());
+            assertEquals("Test", user_obtained6.getLastName());
+            assertEquals("Test", user_obtained7.getLastName());
+
+
+            Collection<User> collection4 = storage.findUsers("TEST", false, false, true);
+            ArrayList<User> result4 = new ArrayList<>(collection4);
+
+            assertTrue(result4.size() == 3);
+
+            User user_obtained8 = result4.get(0);
+            User user_obtained9 = result4.get(1);
+            User user_obtained10 = result4.get(2);
+
+            assertEquals("TEST", user_obtained8.getPet().getName());
+            assertEquals("TEST", user_obtained9.getPet().getName());
+            assertEquals("TEST", user_obtained10.getPet().getName());
+
+
+            Collection<User> collection5 = storage.findUsers("T", false, true, false);
+            ArrayList<User> result5 = new ArrayList<>(collection5);
+
+            assertTrue(result5.size() == 3);
+
+            User user_obtained11 = result5.get(0);
+            User user_obtained12 = result5.get(1);
+            User user_obtained13 = result5.get(2);
+
+            assertEquals("Test", user_obtained11.getLastName());
+            assertEquals("Test", user_obtained12.getLastName());
+            assertEquals("Test", user_obtained13.getLastName());
+        }
+
+        finally{
+            storage.removeUser(id);
+            storage.removeUser(id2);
+            storage.removeUser(id3);
+        }
     }
 }
