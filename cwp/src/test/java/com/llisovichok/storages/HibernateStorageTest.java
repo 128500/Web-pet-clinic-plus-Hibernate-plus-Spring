@@ -468,7 +468,7 @@ public class HibernateStorageTest {
         Pet pet = H_STORAGE.getPetById(petId);
         assertEquals("Harpy", pet.getName());
         assertEquals("harpy", pet.getKind());
-        assertEquals(5, pet.getAge());
+        assertEquals(Integer.valueOf(5), pet.getAge());
         assertTrue(pet.getPhoto() != null);
         System.out.println("\n=========================================================================================");
 

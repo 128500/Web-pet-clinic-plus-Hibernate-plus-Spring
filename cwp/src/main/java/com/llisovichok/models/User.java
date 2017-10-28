@@ -78,7 +78,7 @@ public class User extends com.llisovichok.lessons.clinic.Client implements Seria
     }
 
     @Override
-    public long getPhoneNumber() {
+    public Long getPhoneNumber() {
         return super.getPhoneNumber();
     }
 
@@ -108,7 +108,7 @@ public class User extends com.llisovichok.lessons.clinic.Client implements Seria
     }
 
     @Override
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         super.setPhoneNumber(phoneNumber);
     }
 

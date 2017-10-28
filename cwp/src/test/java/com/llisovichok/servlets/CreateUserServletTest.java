@@ -76,10 +76,10 @@ public class CreateUserServletTest extends Mockito {
             assertEquals("fName", user.getFirstName());
             assertEquals("lName", user.getLastName());
             assertEquals("address", user.getAddress());
-            assertEquals(102, user.getPhoneNumber());
+            assertEquals(Long.valueOf(102), user.getPhoneNumber());
             assertEquals("pName", user.getPet().getName());
             assertEquals("kind", user.getPet().getKind());
-            assertEquals(2, user.getPet().getAge());
+            assertEquals(Integer.valueOf(2), user.getPet().getAge());
 
         } finally{
             H_STORAGE.removeUser(id);
@@ -222,10 +222,10 @@ public class CreateUserServletTest extends Mockito {
         assertEquals("fName", user.getFirstName());
         assertEquals("lName", user.getLastName());
         assertEquals("address", user.getAddress());
-        assertEquals(102, user.getPhoneNumber());
+        assertEquals(Long.valueOf(102), user.getPhoneNumber());
         assertEquals("pName", user.getPet().getName());
         assertEquals("kind", user.getPet().getKind());
-        assertEquals(2, user.getPet().getAge());
+        assertEquals(Integer.valueOf(2), user.getPet().getAge());
 
         System.out.println("\n###########  DONE ############\n");
     }

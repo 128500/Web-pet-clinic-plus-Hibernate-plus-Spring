@@ -17,7 +17,7 @@ public class Pet implements Serializable {
 	private String kind = "pet";
 
 	/* Age of the pet */
-	private int age;
+	private Integer age;
 
 	/*Pet's photograph*/
 	private PetPhoto photo;
@@ -64,7 +64,7 @@ public class Pet implements Serializable {
 		return this.kind;
 	}
 
-	public int getAge(){
+	public Integer getAge(){
 		return this.age;
 	}
 
@@ -80,7 +80,7 @@ public class Pet implements Serializable {
 		this.id = id;
 	}
 
-	public void setAge(final int age){
+	public void setAge(final Integer age){
 		this.age = age;
 	}
 

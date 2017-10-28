@@ -50,18 +50,18 @@ public class SpringJdbcStorageTest {
         assertEquals("Test", example1.getFirstName() );
         assertEquals("Testing", example1.getLastName() );
         assertEquals("Test", example1.getAddress() );
-        assertEquals(647834783, example1.getPhoneNumber() );
+        assertEquals(Long.valueOf(647834783), example1.getPhoneNumber() );
         assertEquals("Test", example1.getPet().getName() );
         assertEquals("test", example1.getPet().getKind() );
-        assertEquals(2, example1.getPet().getAge() );
+        assertEquals(Integer.valueOf(2), example1.getPet().getAge() );
 
         assertEquals("Opra", example2.getFirstName() );
         assertEquals("Jenkins", example2.getLastName() );
         assertEquals("Greedy st., 458", example2.getAddress() );
-        assertEquals(58235419, example2.getPhoneNumber() );
+        assertEquals(Long.valueOf(58235419), example2.getPhoneNumber() );
         assertEquals("Dodik", example2.getPet().getName() );
         assertEquals("snake", example2.getPet().getKind() );
-        assertEquals(4, example2.getPet().getAge() );
+        assertEquals(Integer.valueOf(4), example2.getPet().getAge() );
     }
 
     @Test
@@ -75,10 +75,10 @@ public class SpringJdbcStorageTest {
         assertEquals("Test", addedUser.getFirstName() );
         assertEquals("Testing", addedUser.getLastName() );
         assertEquals("Test", addedUser.getAddress() );
-        assertEquals(647834783, addedUser.getPhoneNumber() );
+        assertEquals(Long.valueOf(647834783), addedUser.getPhoneNumber() );
         assertEquals("Test", addedUser.getPet().getName() );
         assertEquals("test", addedUser.getPet().getKind() );
-        assertEquals(2, addedUser.getPet().getAge() );
+        assertEquals(Integer.valueOf(2), addedUser.getPet().getAge() );
     }
 
     @Test
@@ -93,10 +93,10 @@ public class SpringJdbcStorageTest {
         assertEquals("Opra", alterEgo.getFirstName() );
         assertEquals("Jenkins", alterEgo.getLastName() );
         assertEquals("Greedy st., 458", alterEgo.getAddress() );
-        assertEquals(58235419, alterEgo.getPhoneNumber() );
+        assertEquals(Long.valueOf(58235419), alterEgo.getPhoneNumber() );
         assertEquals("Dodik", alterEgo.getPet().getName() );
         assertEquals("snake", alterEgo.getPet().getKind() );
-        assertEquals(4, alterEgo.getPet().getAge() );
+        assertEquals(Integer.valueOf(4), alterEgo.getPet().getAge() );
     }
 
 

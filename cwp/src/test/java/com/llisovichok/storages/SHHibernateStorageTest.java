@@ -44,10 +44,10 @@ public class SHHibernateStorageTest {
         assertEquals("Danni", retrieved.getFirstName());
         assertEquals("Groover", retrieved.getLastName());
         assertEquals("Princess Diana st., 19", retrieved.getAddress());
-        assertEquals(582369258410L, retrieved.getPhoneNumber());
+        assertEquals(Long.valueOf(582369258410L), retrieved.getPhoneNumber());
         assertEquals("Fuco", retrieved.getPet().getName());
         assertEquals("dog", retrieved.getPet().getKind());
-        assertEquals(5, retrieved.getPet().getAge());
+        assertEquals(Integer.valueOf(5), retrieved.getPet().getAge());
         assertEquals("admin", retrieved.getRole().getName());
     }
 

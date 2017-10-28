@@ -66,8 +66,8 @@ public class EditUserServletTest extends Mockito {
             assertEquals("Altered", altered.getFirstName());
             assertEquals("Altered", altered.getLastName());
             assertEquals("Altered", altered.getAddress());
-            assertEquals(1111L, altered.getPhoneNumber());
-            assertEquals(1111, altered.getPet().getAge());
+            assertEquals(Long.valueOf(1111L), altered.getPhoneNumber());
+            assertEquals(Integer.valueOf(1111), altered.getPet().getAge());
             assertEquals("altered", altered.getPet().getKind());
             assertEquals("Altered", altered.getPet().getName());
         } finally{

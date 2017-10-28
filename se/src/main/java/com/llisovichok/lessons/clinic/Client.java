@@ -27,7 +27,7 @@ public class Client implements Serializable {
 	/**
 	 * Client's phone number
 	 */
-	private long phoneNumber;
+	private Long phoneNumber;
 	
 	/**
 	*A pet that the client has
@@ -84,7 +84,7 @@ public class Client implements Serializable {
 
 	public String getAddress(){return this.address;}
 
-	public long getPhoneNumber(){
+	public Long getPhoneNumber(){
 		return this.phoneNumber;
 	}
 
@@ -113,7 +113,7 @@ public class Client implements Serializable {
 		this.pet = pet;
 	}
 
-	public void setPhoneNumber(long phoneNumber){
+	public void setPhoneNumber(Long phoneNumber){
 		this.phoneNumber = phoneNumber;
 	}
 
