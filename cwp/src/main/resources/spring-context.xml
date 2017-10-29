@@ -27,6 +27,12 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="10000000" />
+    </bean>
+
     <!-- Beans for HibernateTemplate-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="configLocations" value="classpath:hibernate.cfg.xml"/>

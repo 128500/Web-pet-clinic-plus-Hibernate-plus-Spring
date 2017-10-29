@@ -58,7 +58,7 @@
             <td >${user.getPet().getName()}</td>
             <td >${user.getPet().getAge()}</td>
             <td >
-                <a href="${pageContext.servletContext.contextPath}/user/addinfo?id=${user.getId()}" title="Add info to profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/add.png" alt=""></a>
+                <a href="${pageContext.servletContext.contextPath}/user/addinfo/${user.getId()}" title="Add info to profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/add.png" alt=""></a>
                 <a href="${pageContext.servletContext.contextPath}/user/edit?id=${user.getId()}" title="Edit profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
                 <a href="${pageContext.servletContext.contextPath}/user/delete?id=${user.getId()}" title="Delete profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/delete.png" alt=""></a>
                 <a href="${pageContext.servletContext.contextPath}/user/view_messages?id=${user.getId()}" title="View users messages" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
