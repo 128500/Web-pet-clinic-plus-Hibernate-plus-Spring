@@ -45,10 +45,10 @@ public class UserController {
         return new ModelAndView("redirect:/admin/view_users");
     }
 
-    @RequestMapping(value = "/addinfo/{id}", method = RequestMethod.GET )
+    @RequestMapping(value = "/add_photo/{id}", method = RequestMethod.GET )
     public String addInfo(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("user", storages.shHiberStorage.getUser(id));
-        return "/user/add_info";
+        return "/user/add_photo";
     }
 
     @RequestMapping(value = "/save_photo", method = RequestMethod.POST)
@@ -57,8 +57,8 @@ public class UserController {
                            ModelMap model){
         byte [] photoBytes = getPhotoBytes(file); // see below for method definition
         boolean result = storages.shHiberStorage.addPhotoWithHibernate(petId, photoBytes);
-        if(result) model.addAttribute("message", "PHOTO WAS SUCCESSFULLY ADDED");
-        else model.addAttribute("message", "COULDN'T ADD PHOTO");
+        if(result) model.addAttribute("message", "THE PHOTO WAS SUCCESSFULLY ADDED");
+        else model.addAttribute("message", "COULDN'T ADD THE PHOTO");
         return "/user/progress_in_adding_photo";
     }
 
@@ -88,4 +88,20 @@ public class UserController {
         }
         throw new IllegalStateException("Couldn't image bytes");
     }
+
+
+    @RequestMapping(value = "/edit_profile/{id}", method = RequestMethod.GET)
+    public String editProfile(@PathVariable("id") Integer id, ModelMap model){
+        model.addAttribute("user", storages.shHiberStorage.getUser(id));
+        return "/user/edit_profile";
+    }
+
+    @RequestMapping(value = "/edit_profile", method = RequestMethod.POST)
+    public String saveProfileChanges(@ModelAttribute("user") User user, ModelMap model){
+        boolean result = storages.shHiberStorage.editUser(user.getId(), user);
+        if(result) model.addAttribute("message", "PROFILE WAS SUCCESSFULLY EDITED");
+        else model.addAttribute("message", "SORRY, BUT WE COULDN'T ADD CHANGES TO YOUR PROFILE");
+        return "/user/progress_in_adding_photo";
+    }
+
 }

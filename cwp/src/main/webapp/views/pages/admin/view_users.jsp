@@ -12,8 +12,8 @@
 <head>
     <title>VIEW CLIENTS</title>
     <link href="${pageContext.servletContext.contextPath}/views/css/viewUsersStyle.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/viewUserScript.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/views/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/views/js/viewUserScript.js"></script>
 </head>
 
 <body>
@@ -58,8 +58,8 @@
             <td >${user.getPet().getName()}</td>
             <td >${user.getPet().getAge()}</td>
             <td >
-                <a href="${pageContext.servletContext.contextPath}/user/addinfo/${user.getId()}" title="Add info to profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/add.png" alt=""></a>
-                <a href="${pageContext.servletContext.contextPath}/user/edit?id=${user.getId()}" title="Edit profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
+                <a href="${pageContext.servletContext.contextPath}/user/add_photo/${user.getId()}" title="Add info to profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/add.png" alt=""></a>
+                <a href="${pageContext.servletContext.contextPath}/user/edit_profile/${user.getId()}" title="Edit profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
                 <a href="${pageContext.servletContext.contextPath}/user/delete?id=${user.getId()}" title="Delete profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/delete.png" alt=""></a>
                 <a href="${pageContext.servletContext.contextPath}/user/view_messages?id=${user.getId()}" title="View users messages" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
                 <a href="${pageContext.servletContext.contextPath}/user/send_message?id=${user.getId()}" title="Send message to this user" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
