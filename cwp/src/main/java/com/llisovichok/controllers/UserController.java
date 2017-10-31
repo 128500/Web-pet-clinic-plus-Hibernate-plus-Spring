@@ -4,6 +4,10 @@ import com.llisovichok.lessons.clinic.Pet;
 import com.llisovichok.models.User;
 import com.llisovichok.storages.Storages;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.CacheControl;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -104,4 +108,19 @@ public class UserController {
         return "/user/progress_in_adding_photo";
     }
 
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("id") Integer id){
+        storages.shHiberStorage.removeUser(id);
+        return "redirect:/admin/view_users";
+    }
+
+
+    @RequestMapping(value = "/load_photo/{petId}", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> loadPhoto(@PathVariable("petId") Integer petId) {
+        HttpHeaders headers = new HttpHeaders();
+        byte[] photo = storages.shHiberStorage.getPetById(petId).getPhoto().getImage();
+        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(photo, headers, HttpStatus.OK);
+        return responseEntity;
+    }
 }

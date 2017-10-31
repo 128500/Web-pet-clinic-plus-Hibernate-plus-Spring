@@ -34,13 +34,14 @@
 
 <div id="content">
     <div id="pet_image">
-        <img src="${pageContext.servletContext.contextPath}/show_image/${user.getPet().getId()}.jpeg" alt="Sorry, there is no photo yet" id="pet_photo">
+        <img src="${pageContext.servletContext.contextPath}/user/load_photo/${user.getPet().getId()}.jpeg" alt="Sorry, there is no photo yet" id="pet_photo">
     </div>
 <form:form modelAttribute="user" action="${pageContext.servletContext.contextPath}/user/edit_profile" method="POST">
-    <div class="form_input">
+
         <form:input type="hidden" path="id" value="${user.getId()}"/>
         <form:input type="hidden" path="role.name" value="${user.getRole().getName()}"/>
 
+    <div class="form_input">
         <form:label path="firstName">First name: </form:label>
         <form:input type="text" path="firstName" value="${user.getFirstName()}"/>
     </div>

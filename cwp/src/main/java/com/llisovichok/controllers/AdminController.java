@@ -39,10 +39,10 @@ public class AdminController {
                             ModelMap model){
         List<User> foundUsers = new ArrayList<>( storages.shHiberStorage.findUsers(input, fn, ln, pn));
 
-        if(foundUsers.isEmpty()) return "/failed_result_of_searching";
+        if(foundUsers.isEmpty()) return "/admin/failed_result_of_searching";
         else{
             model.addAttribute("foundUsers", foundUsers);
-            return "/result_of_searching";
+            return "/admin/result_of_searching";
         }
     }
 }
