@@ -1,6 +1,6 @@
 package com.llisovichok.controllers;
 
-import com.llisovichok.lessons.clinic.Pet;
+import com.llisovichok.models.Message;
 import com.llisovichok.models.User;
 import com.llisovichok.storages.Storages;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.Part;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Set;
 
 /**
  * Created by KUDIN ALEKSANDR on 23.10.2017.
@@ -63,7 +61,7 @@ public class UserController {
         boolean result = storages.shHiberStorage.addPhotoWithHibernate(petId, photoBytes);
         if(result) model.addAttribute("message", "THE PHOTO WAS SUCCESSFULLY ADDED");
         else model.addAttribute("message", "COULDN'T ADD THE PHOTO");
-        return "/user/progress_in_adding_photo";
+        return "/user/show_message";
     }
 
 
@@ -105,7 +103,7 @@ public class UserController {
         boolean result = storages.shHiberStorage.editUser(user.getId(), user);
         if(result) model.addAttribute("message", "PROFILE WAS SUCCESSFULLY EDITED");
         else model.addAttribute("message", "SORRY, BUT WE COULDN'T ADD CHANGES TO YOUR PROFILE");
-        return "/user/progress_in_adding_photo";
+        return "/user/show_message";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -120,7 +118,34 @@ public class UserController {
         HttpHeaders headers = new HttpHeaders();
         byte[] photo = storages.shHiberStorage.getPetById(petId).getPhoto().getImage();
         headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(photo, headers, HttpStatus.OK);
-        return responseEntity;
+        return new ResponseEntity<>(photo, headers, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/view_messages/{id}", method = RequestMethod.GET)
+    public String getUserMessages(@PathVariable("id") Integer id, ModelMap model){
+        Set<Message> messages =  storages.shHiberStorage.getUser(id).getMessages();
+        model.addAttribute("messages", messages);
+        return "/user/view_messages";
+    }
+
+
+    @RequestMapping(value = "/send_message/{id}", method = RequestMethod.GET)
+    public String writeMessage(@PathVariable("id") Integer id, ModelMap model){
+        model.addAttribute("user", storages.shHiberStorage.getUser(id));
+        return "/user/send_message";
+    }
+
+    @RequestMapping(value = "/save_message/{id}", method = RequestMethod.POST)
+    public String saveMessage(@PathVariable("id")Integer id,
+                              @RequestParam("message") String text,
+                              ModelMap model){
+        User user = storages.shHiberStorage.getUser(id);
+        Message message = new Message(text);
+        message.setUser(user);
+        user.getMessages().add(message);
+        boolean result  = storages.shHiberStorage.editUser(user.getId(), user);
+        if(result) model.addAttribute("message", "THE MESSAGE WAS SENT SUCCESSFULLY");
+        else model.addAttribute("message", "SORRY, BUT WE COULDN'T SEND THE MESSAGE");
+        return "/user/show_message";
     }
 }

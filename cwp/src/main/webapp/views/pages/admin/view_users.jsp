@@ -61,8 +61,8 @@
                 <a href="${pageContext.servletContext.contextPath}/user/add_photo/${user.getId()}" title="Add info to profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/add.png" alt=""></a>
                 <a href="${pageContext.servletContext.contextPath}/user/edit_profile/${user.getId()}" title="Edit profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
                 <a href="${pageContext.servletContext.contextPath}/user/delete/${user.getId()}" title="Delete profile" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/delete.png" alt=""></a>
-                <a href="${pageContext.servletContext.contextPath}/user/view_messages?id=${user.getId()}" title="View users messages" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
-                <a href="${pageContext.servletContext.contextPath}/user/send_message?id=${user.getId()}" title="Send message to this user" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
+                <a href="${pageContext.servletContext.contextPath}/user/view_messages/${user.getId()}" title="View users messages" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
+                <a href="${pageContext.servletContext.contextPath}/user/send_message/${user.getId()}" title="Send message to this user" class="hovertip"><img src="${pageContext.servletContext.contextPath}/views/images/edit.png" alt=""></a>
             </td>
         </tr>
     </c:forEach>

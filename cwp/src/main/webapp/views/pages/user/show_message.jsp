@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="true" %>
 <html>
 <head>
-    <title>SUCCSESS IN ADDING PHOTO</title>
+    <title>MESSAGE</title>
     <link href="${pageContext.servletContext.contextPath}/views/css/failedResultOfSearchingStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
