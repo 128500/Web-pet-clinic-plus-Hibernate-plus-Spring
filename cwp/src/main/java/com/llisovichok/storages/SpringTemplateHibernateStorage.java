@@ -20,12 +20,13 @@ import java.util.Set;
  */
 
 @Repository
-public class SpringTamplateHibernateStorage implements SpringTamplateHiberStorage {
+@Transactional
+public class SpringTemplateHibernateStorage implements SpringTamplateHiberStorage {
 
     public final HibernateTemplate template;
 
     @Autowired
-    public SpringTamplateHibernateStorage(HibernateTemplate template){
+    public SpringTemplateHibernateStorage(HibernateTemplate template){
         this.template = template;
     }
 
@@ -55,7 +56,9 @@ public class SpringTamplateHibernateStorage implements SpringTamplateHiberStorag
             retrievedUser.getPet().setKind(user.getPet().getKind());
             retrievedUser.getPet().setAge(user.getPet().getAge());
             if (user.getMessages() != null) {
-                retrievedUser.getMessages().addAll(user.getMessages());
+                Set<Message> messages = user.getMessages();
+                for(Message m : messages) m.setUser(retrievedUser);
+                retrievedUser.getMessages().addAll(messages);
             }
             retrievedUser.getRole().setName(user.getRole().getName());
             this.template.saveOrUpdate(retrievedUser);
@@ -115,7 +118,7 @@ public class SpringTamplateHibernateStorage implements SpringTamplateHiberStorag
 
     @Override
     public Pet getPetById(Integer petId) {
-        return (Pet)this.template.findByNamedParam("from Pet p " +
+        return (Pet) this.template.findByNamedParam("from Pet p " +
                 "left join fetch p.photo where p.id = :id", "id", petId).
                 iterator().next();
     }

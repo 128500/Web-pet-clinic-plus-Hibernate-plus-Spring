@@ -58,7 +58,6 @@ public class User extends com.llisovichok.lessons.clinic.Client implements Seria
     }
 
     public void setMessages(Set<Message> messages) {
-        for(Message m : messages) m.setUser(this);
         this.messages = messages;
     }
 
