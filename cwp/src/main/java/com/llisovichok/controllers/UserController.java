@@ -113,6 +113,12 @@ public class UserController {
     }
 
 
+    /**
+     * This method is used as a subsidiary method to retrieve the photo
+     * of the pet from database and show it on the web page
+     * @param petId - id of the pet
+     * @return the retrieved photo as an array of bytes
+     */
     @RequestMapping(value = "/load_photo/{petId}", method = RequestMethod.GET)
     public ResponseEntity<byte[]> loadPhoto(@PathVariable("petId") Integer petId) {
         HttpHeaders headers = new HttpHeaders();
