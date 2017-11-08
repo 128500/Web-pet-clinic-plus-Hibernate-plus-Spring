@@ -21,6 +21,8 @@
     </class>
 
     <subclass name="com.llisovichok.models.User" extends="com.llisovichok.lessons.clinic.Client">
+        <property name="login" column="login" type="string"/>
+        <property name="password" column="password" type="string"/>
         <many-to-one name="pet" column="pet_id" unique="true" cascade="all-delete-orphan"/>
         <many-to-one name="role" column="role_id" unique="true" cascade="all-delete-orphan"/>
         <set name="messages" table="message_t" lazy="false" cascade="all-delete-orphan">

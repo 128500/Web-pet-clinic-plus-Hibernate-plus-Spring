@@ -16,6 +16,10 @@ public class User extends com.llisovichok.lessons.clinic.Client implements Seria
 
     private Set<Message> messages;
 
+    private String login;
+
+    private String password;
+
     public User() {
         super();
     }
@@ -61,7 +65,6 @@ public class User extends com.llisovichok.lessons.clinic.Client implements Seria
         this.messages = messages;
     }
 
-
     @Override
     public String getFirstName() {
         return super.getFirstName();
@@ -87,6 +90,14 @@ public class User extends com.llisovichok.lessons.clinic.Client implements Seria
         return super.getPet();
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public void setFirstName(String firstName) {
         super.setFirstName(firstName);
@@ -110,6 +121,14 @@ public class User extends com.llisovichok.lessons.clinic.Client implements Seria
     @Override
     public void setPhoneNumber(Long phoneNumber) {
         super.setPhoneNumber(phoneNumber);
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

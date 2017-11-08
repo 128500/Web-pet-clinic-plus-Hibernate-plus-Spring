@@ -13,4 +13,6 @@ public interface SpringTamplateHiberStorage extends SpringTamplateStorages<User>
     Pet getPetById(Integer petId);
 
     void addMessage(Integer id, String message);
+
+    User getByAuth(String login, String password);
 }

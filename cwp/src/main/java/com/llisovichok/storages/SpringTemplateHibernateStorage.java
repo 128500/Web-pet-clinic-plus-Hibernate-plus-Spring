@@ -140,4 +140,13 @@ public class SpringTemplateHibernateStorage implements SpringTamplateHiberStorag
         this.template.saveOrUpdate(user);
     }
 
+    @Override
+    public User getByAuth(String login, String password) {
+        return (User) this.template.findByNamedParam("from User user join fetch " +
+                "user.role where user.login = :login and " +
+                "user.password = :password",
+                new String[]{"login", "password"},
+                new Object[]{login, password} ).iterator().next();
+    }
+
 }
