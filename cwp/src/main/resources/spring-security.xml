@@ -8,8 +8,20 @@
              http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
 
-    <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/admin/**" access="hasAuthority('admin')"/>
+    <http use-expressions="true">
+        <intercept-url pattern="/admin" access="hasAnyAuthority('admin')"/>
+        <intercept-url pattern="/manager" access="hasAnyAuthority('manager')"/>
+        <intercept-url pattern="/user" access="hasAnyAuthority('user')"/>
+
+        <form-login
+            login-page="/login.jsp"
+            default-target-url="/homepage.jsp"
+            authentication-failure-url="/login.jsp?error=true"
+            always-use-default-target="true"/>
+
+        <logout logout-success-url="/login.jsp"/>
+
+        <csrf/>
     </http>
 
     <authentication-manager>

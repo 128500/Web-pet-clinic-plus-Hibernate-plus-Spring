@@ -30,7 +30,7 @@
 
 <div id="sidebar">
     <a href="${pageContext.servletContext.contextPath}/admin/view_users" id="refAddUser">&raquo; Back to viewing page</a>
-    <a href="${pageContext.servletContext.contextPath}/views/pages/user/find_user.jsp" id="refFindUser">&raquo; Find user or pet</a>
+    <a href="${pageContext.servletContext.contextPath}/views/pages/admin/find_user.jsp" id="refFindUser">&raquo; Find user or pet</a>
 </div>
 
 <div id="content">

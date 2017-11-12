@@ -18,7 +18,7 @@
 <br>
 <div>
     <h2>
-        <a href="${pageContext.servletContext.contextPath}/views/pages/user/find_user.jsp">Back to searching</a>
+        <a href="${pageContext.servletContext.contextPath}/views/pages/admin/find_user.jsp">Back to searching</a>
         <br/>
         <br/>
         <a href="${pageContext.servletContext.contextPath}/admin/view_users">Back to viewing page</a>

@@ -28,7 +28,7 @@
 <div id="sidebar">
     <a href="${pageContext.servletContext.contextPath}/admin/view_users" id="refViewUser">&raquo; Return to main page</a>
     <a href="${pageContext.servletContext.contextPath}/user/create_account" id="refAddUser">&raquo; Add user into the database</a>
-    <a href="${pageContext.servletContext.contextPath}/views/pages/user/find_user.jsp" id="refFindUser">&raquo; Find user or pet</a>
+    <a href="${pageContext.servletContext.contextPath}/views/pages/admin/find_user.jsp" id="refFindUser">&raquo; Find user or pet</a>
 </div>
 
 
