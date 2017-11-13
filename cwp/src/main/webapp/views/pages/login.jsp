@@ -18,7 +18,7 @@
     <form name="login_form" action="${pageContext.servletContext.contextPath}/login" method="post">
         <div>
             <label for="login">Login: </label>
-            <input type="text" name="login" id="login"/>
+            <input type="text" name="username" id="login" value=""/>
         </div>
         <div>
             <label for="password">Password: </label>

@@ -9,13 +9,13 @@
 
 
     <http use-expressions="true">
-        <intercept-url pattern="/admin" access="hasAnyAuthority('admin')"/>
-        <intercept-url pattern="/manager" access="hasAnyAuthority('manager')"/>
-        <intercept-url pattern="/user" access="hasAnyAuthority('user')"/>
+        <intercept-url pattern="/admin" access="hasAuthority('admin')"/>
+        <intercept-url pattern="/manager" access="hasAuthority('manager')"/>
+        <intercept-url pattern="/user" access="hasAuthority('user')"/>
 
         <form-login
             login-page="/login.jsp"
-            default-target-url="/homepage.jsp"
+            default-target-url="/views/pages/homepage.jsp"
             authentication-failure-url="/login.jsp?error=true"
             always-use-default-target="true"/>
 
