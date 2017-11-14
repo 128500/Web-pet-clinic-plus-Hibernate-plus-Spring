@@ -28,7 +28,7 @@ public class AdminController {
 
     @RequestMapping(value = "/view_users", method = RequestMethod.GET)
     public String showUsers(ModelMap model){
-        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("users", storages.shHiberStorage.values());
         return "/admin/view_users";
     }

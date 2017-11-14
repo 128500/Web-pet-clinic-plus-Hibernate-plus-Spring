@@ -50,6 +50,8 @@
            <input type="radio" name="address">Address <br/>
        </div>
 
+       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
         <div>
             <input type="submit" name="find" value="Find" class="form_input" id="submit_button">
         </div>
