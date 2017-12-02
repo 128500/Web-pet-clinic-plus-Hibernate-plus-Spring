@@ -13,7 +13,7 @@
     <link href="${pageContext.servletContext.contextPath}/views/css/failedResultOfSearchingStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h2>SORRY! THERE ARE NO MATCHES WITH THE INPUT VALUE</h2>
+<h2>Welcome user</h2>
 <br>
 <br>
 <div>

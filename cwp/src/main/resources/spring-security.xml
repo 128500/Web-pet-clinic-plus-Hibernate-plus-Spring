@@ -9,17 +9,17 @@
 
 
     <http use-expressions="true">
-        <intercept-url pattern="/admin/**" access="hasAuthority('admin')"/>
-        <intercept-url pattern="/manager/**" access="hasAnyAuthority('manager','admin')"/>
-        <intercept-url pattern="/user/**" access="hasAnyAuthority('user', 'manager', 'admin')"/>
+        <intercept-url pattern="/views/pages/admin/**" access="hasAuthority('admin')"/>
+        <intercept-url pattern="/views/pages/manager/**" access="hasAnyAuthority('manager','admin')"/>
+        <intercept-url pattern="/views/pages/user/**" access="hasAnyAuthority('user', 'manager', 'admin')"/>
 
         <form-login
-            login-page="/login.jsp"
+            login-page="/login"
             default-target-url="/redirecting"
-            authentication-failure-url="/login.jsp?error=true"
+            authentication-failure-url="/login"
             always-use-default-target="true"/>
 
-        <logout logout-success-url="/login.jsp"/>
+        <logout logout-success-url="/login"/>
 
         <csrf/>
     </http>

@@ -36,7 +36,7 @@
 <div id="content">
 <h4>TO CREATE AN ACCOUNT PLEASE FILL THE FORM BELOW</h4>
 
-<form:form modelAttribute="user" action="${pageContext.servletContext.contextPath}/user/add_user" method="POST">
+<form:form modelAttribute="user" action="${pageContext.servletContext.contextPath}/manager/add_user" method="POST">
 
     <div class="form_input">
         <form:label path="firstName">First name: </form:label>

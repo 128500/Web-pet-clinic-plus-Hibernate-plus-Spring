@@ -13,15 +13,15 @@
     <link href="${pageContext.servletContext.contextPath}/views/css/failedResultOfSearchingStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h2>SORRY! THERE ARE NO MATCHES WITH THE INPUT VALUE</h2>
+<h2>WELCOME ADMIN!</h2>
 <br>
 <br>
 <div>
     <h2>
-        <a href="${pageContext.servletContext.contextPath}/views/pages/admin/find_user.jsp">Back to searching</a>
+        <a href="${pageContext.servletContext.contextPath}/views/pages/admin/find_user.jsp">FIND USER</a>
         <br/>
         <br/>
-        <a href="${pageContext.servletContext.contextPath}/admin/view_users">Back to viewing page</a>
+        <a href="${pageContext.servletContext.contextPath}/admin/view_users">VIEW ALL USERS</a>
     </h2>
 </div>
 </body>

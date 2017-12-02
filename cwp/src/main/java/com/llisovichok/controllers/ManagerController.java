@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
+ * TODO add manager to database
  * Created by KUDIN ALEKSANDR on 11.11.2017.
  */
 

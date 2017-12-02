@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
+ * TODO add logout controller
  * Created by KUDIN ALEKSANDR on 12.11.2017.
  */
 
@@ -24,7 +25,7 @@ public class LoginController {
         String page = "wrong_authority_page";
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String role = auth.getAuthorities().iterator().next().getAuthority();
-        if(role.equals("admin")) page = "/admin/admin_homepage";
+        if(role.equals("admin")) page = "redirect:/views/pages/admin/admin_homepage.jsp";
         if(role.equals("manager")) page = "/manager/manager_homepage";
         if(role.equals("user")) page = "/user/user_homepage";
         return page;
