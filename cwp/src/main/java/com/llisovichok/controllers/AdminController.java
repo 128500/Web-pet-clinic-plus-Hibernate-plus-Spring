@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * TODO erase all direct links to jsp (any access must be through controllers)
+ * TODO add link 'Add new manager/admin' to the admin homepage
  * Created by KUDIN ALEKSANDR on 23.10.2017.
  */
 

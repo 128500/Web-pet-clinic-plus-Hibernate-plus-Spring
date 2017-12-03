@@ -22,6 +22,9 @@
         <br/>
         <br/>
         <a href="${pageContext.servletContext.contextPath}/admin/view_users">VIEW ALL USERS</a>
+        <br/>
+        <br/>
+        <a href="${pageContext.servletContext.contextPath}/logout">LOGOUT</a>
     </h2>
 </div>
 </body>

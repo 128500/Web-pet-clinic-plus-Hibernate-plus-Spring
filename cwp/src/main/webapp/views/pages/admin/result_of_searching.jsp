@@ -25,7 +25,7 @@
 </div>
 
 <div id="sidebar">
-    <a href="${pageContext.servletContext.contextPath}/user/create_account">&raquo; Add user into the database</a>
+    <a href="${pageContext.servletContext.contextPath}/manager/create_account">&raquo; Add user into the database</a>
     <a href="${pageContext.servletContext.contextPath}/views/pages/admin/find_user.jsp">&raquo; Find user or pet</a>
     <a href="${pageContext.servletContext.contextPath}/admin/view_users">&raquo; Return to viewing page</a>
 </div>
